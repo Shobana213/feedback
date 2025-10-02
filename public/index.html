@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Collector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Feedback Collector</h1>
+            <p>Share your anonymous feedback with us</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('submit')">Submit Feedback</button>
+            <button class="tab-button" onclick="showTab('dashboard')">View Dashboard</button>
+        </div>
+
+        <!-- Submit Feedback Tab -->
+        <div id="submit-tab" class="tab-content active">
+            <div class="feedback-form">
+                <h2>Submit Your Feedback</h2>
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <div class="rating-container">
+                            <div class="stars" id="starRating">
+                                <span class="star" data-rating="1">⭐</span>
+                                <span class="star" data-rating="2">⭐</span>
+                                <span class="star" data-rating="3">⭐</span>
+                                <span class="star" data-rating="4">⭐</span>
+                                <span class="star" data-rating="5">⭐</span>
+                            </div>
+                            <span id="ratingText">Click to rate</span>
+                        </div>
+                        <input type="hidden" id="rating" name="rating" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea 
+                            id="comment" 
+                            name="comment" 
+                            rows="4" 
+                            placeholder="Share your thoughts, suggestions, or concerns..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Feedback</button>
+                </form>
+
+                <div id="submitMessage" class="message"></div>
+            </div>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content">
+            <div class="dashboard">
+                <h2>Feedback Dashboard</h2>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total Feedback</h3>
+                        <span id="totalCount">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Rating</h3>
+                        <span id="averageRating">0.0</span>
+                    </div>
+                </div>
+
+                <div class="feedback-list">
+                    <h3>Recent Feedback</h3>
+                    <button id="refreshBtn" class="refresh-btn">🔄 Refresh</button>
+                    <div id="feedbackEntries">
+                        <p class="loading">Loading feedback...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
